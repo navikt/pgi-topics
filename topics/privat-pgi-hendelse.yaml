@@ -1,0 +1,26 @@
+apiVersion: kafka.nais.io/v1
+kind: Topic
+metadata:
+  name: privat-pgi-hendelse
+  namespace: pensjonsamhandling
+  labels:
+    team: pensjonsamhandling
+spec:
+  pool: nav-dev,nav-prod
+  config:
+    cleanupPolicy: delete
+    minimumInSyncReplicas: 1
+    partitions: 3
+    replication: 3
+    retentionBytes: -1 # Messages will never get deleted because of disk space
+    retentionHours: 2192 # Messages are stored for 3 months
+  acl:
+    - team: pensjonsamhandling
+      application: pgi-les-hendelse-skatt
+      access: write
+    - team: pensjonsamhandling
+      application: pgi-lagre-inntekt-popp # Rekjøring av hendelser hvis korresponderende inntekt feiler mot POPP
+      access: write
+    - team: pensjonsamhandling
+      application: pgi-les-inntekt-skatt
+      access: read
