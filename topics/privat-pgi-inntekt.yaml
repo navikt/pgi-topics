@@ -6,7 +6,7 @@ metadata:
   labels:
     team: pensjonsamhandling
 spec:
-  pool: nav-dev,nav-prod
+  pool: nav-dev
   config:
     cleanupPolicy: delete
     minimumInSyncReplicas: 1
