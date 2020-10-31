@@ -1,0 +1,21 @@
+{
+  "topics": [
+    {
+      "topicName": "privat-pgi-inntekt",
+      "numPartitions": 3,
+      "configEntries": {
+        "retention.ms": "-1"
+      },
+      "members": [
+        {
+          "member": "srvpgilesinntekt",
+          "role": "PRODUCER"
+        },
+        {
+          "member": "srvpgilagreinntekt",
+          "role": "CONSUMER"
+        }
+      ]
+    }
+  ]
+}

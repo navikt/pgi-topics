@@ -1,7 +1,7 @@
 # pgi-topics
 Kafka topics for pgi (pensjonsgivende inntekt) området
 
-#### Endringer på topic config
+#### Endringer på topic config for aiven:
 1. Utfør endringer i yaml filene under `topics/` 
 2. Kjør følgende kommandoer:
 
@@ -21,6 +21,17 @@ Du kan verifisere endringer ved hjelp av følgende kommando:
 ```
 kubectl get topics -n pensjonsamhandling
 ```
+
+#### Endringer på topic config for onprem kafka:
+Json filene som starter med "onprem-" kan copy pastes inn i 
+[kafka-adminrest](https://kafka-adminrest.nais.preprod.local/api/v1/apidocs/index.html?url=swagger.json) sitt oneshot endepunkt for endring/oppretting.
+
+Servicebrukere for autentisering (brukes kun av onprem kafka):
+- srvpgileshendelse
+- srvpgilesinntekt
+- srvpgilagreinntekt
+
+Det er meningen å migrere bort fra dette, og kun bruke aiven kafka.
 
 #### Bruksområde
 Applikasjonene som bruker topicene kan du finne her:

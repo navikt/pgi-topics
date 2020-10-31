@@ -1,0 +1,22 @@
+{
+  "topics": [
+    {
+      "topicName": "privat-pgi-nextsekvensnummer",
+      "numPartitions": 1,
+      "configEntries": {
+        "retention.ms": "-1",
+        "cleanup.policy": "compact"
+      },
+      "members": [
+        {
+          "member": "srvpgileshendelse",
+          "role": "PRODUCER"
+        },
+        {
+          "member": "srvpgileshendelse",
+          "role": "CONSUMER"
+        }
+      ]
+    }
+  ]
+}

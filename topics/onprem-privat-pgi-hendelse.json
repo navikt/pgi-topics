@@ -1,0 +1,25 @@
+{
+  "topics": [
+    {
+      "topicName": "privat-pgi-hendelse",
+      "numPartitions": 3,
+      "configEntries": {
+        "retention.ms": "-1"
+      },
+      "members": [
+        {
+          "member": "srvpgileshendelse",
+          "role": "PRODUCER"
+        },
+        {
+          "member": "srvpgilagreinntekt",
+          "role": "PRODUCER"
+        },
+        {
+          "member": "srvpgilesinntekt",
+          "role": "CONSUMER"
+        }
+      ]
+    }
+  ]
+}
