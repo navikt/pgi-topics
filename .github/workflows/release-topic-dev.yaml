@@ -1,0 +1,21 @@
+name: GCP NAIS Deploy prod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-to-dev:
+    name: Deploy to prod-gcp
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Deploy to GCP dev
+      - name: Release changes for pgi topics
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          VAR: kafka-pool=nav-dev
+          RESOURCE: topics/privat-pgi-nextsekvensnummer.yaml,topics/privat-pgi-hendelse.yaml,topics/privat-pgi-inntekt.yaml

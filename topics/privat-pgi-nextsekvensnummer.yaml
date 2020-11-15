@@ -6,7 +6,7 @@ metadata:
   labels:
     team: pensjonsamhandling
 spec:
-  pool: nav-dev
+  pool: {{kafka-pool}}
   config:
     cleanupPolicy: compact # Kafka will only store _at least_ the last message produced to a topic, for a specific key
     minimumInSyncReplicas: 1
