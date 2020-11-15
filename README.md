@@ -1,7 +1,10 @@
 # pgi-topics
-Kafka topics for pgi (pensjonsgivende inntekt) området
+Kafka topics for pgi (pensjonsgivende inntekt) området. Topics er på Aiven, og ikke onprem Kafka.
 
-#### Endringer på topic config for aiven:
+Utfør endringer i topics/topicnavn.yaml, og push til main branchen. 
+Alle topic resursser vil bli oppdatert i både dev-gcp og prod-gcp.
+
+#### Manuelle endringer på topic config:
 1. Utfør endringer i yaml filene under `topics/` 
 2. Kjør følgende kommandoer:
 
@@ -14,24 +17,13 @@ kubectl apply -f topics/<topicnavn.yaml> -n pensjonsamhandling
 kubectl config use-context dev-gcp
 kubectl apply -f topics/<topicnavn.yaml> -n pensjonsamhandling
 ```
-Det må gjøres for både dev og prod.
+Det må gjøres for både dev og prod hvis du gjør det manuelt.
 
 Du kan verifisere endringer ved hjelp av følgende kommando:
 
 ```
-kubectl get topics -n pensjonsamhandling
+kubectl edit topic <topicnavn> -n pensjonsamhandling
 ```
-
-#### Endringer på topic config for onprem kafka:
-Json filene som starter med "onprem-" kan copy pastes inn i 
-[kafka-adminrest](https://kafka-adminrest.nais.preprod.local/api/v1/apidocs/index.html?url=swagger.json) sitt oneshot endepunkt for endring/oppretting.
-
-Servicebrukere for autentisering (brukes kun av onprem kafka):
-- srvpgileshendelse
-- srvpgilesinntekt
-- srvpgilagreinntekt
-
-Det er meningen å migrere bort fra dette, og kun bruke aiven kafka.
 
 #### Bruksområde
 Applikasjonene som bruker topicene kan du finne her:
