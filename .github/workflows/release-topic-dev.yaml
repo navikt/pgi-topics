@@ -1,4 +1,4 @@
-name: GCP NAIS Deploy prod
+name: Release topic changes dev-gcp
 
 on:
   push:
@@ -7,13 +7,11 @@ on:
 
 jobs:
   deploy-to-dev:
-    name: Deploy to prod-gcp
+    name: Deploy to dev-gcp
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      # Deploy to GCP dev
       - name: Release changes for pgi topics
         uses: nais/deploy/actions/deploy@v1
         env:
