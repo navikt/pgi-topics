@@ -17,5 +17,6 @@ jobs:
       - name: Release changes for pgi topics
         uses: nais/deploy/actions/deploy@v1
         env:
+          CLUSTER: dev-gcp
           VAR: kafka-pool=nav-dev
           RESOURCE: topics/privat-pgi-nextsekvensnummer.yaml,topics/privat-pgi-hendelse.yaml,topics/privat-pgi-inntekt.yaml
