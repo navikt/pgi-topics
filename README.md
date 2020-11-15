@@ -4,6 +4,9 @@ Kafka topics for pgi (pensjonsgivende inntekt) området. Topics er på Aiven, og
 Utfør endringer i topics/topicnavn.yaml, og push til main branchen. 
 Alle topic resursser vil bli oppdatert i både dev-gcp og prod-gcp.
 
+_*NB!*_ Alle topics vil få \<teamnavn>.\<topicnavn> som topicnavn hos kafka brokerne. 
+Så privat-pgi-hendelse vil bli renamet til pensjonsamhandling.privat-pgi-hendelse
+
 #### Manuelle endringer på topic config:
 1. Utfør endringer i yaml filene under `topics/` 
 2. Kjør følgende kommandoer:
