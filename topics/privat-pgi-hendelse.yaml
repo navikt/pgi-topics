@@ -8,7 +8,7 @@ metadata:
 spec:
   pool: {{kafka-pool}}
   config:
-    cleanupPolicy: delete
+    cleanupPolicy: compact # Kafka will only store _at least_ the last message produced to a topic, for a specific key
     minimumInSyncReplicas: 1
     partitions: 3
     replication: 3
