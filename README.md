@@ -8,6 +8,9 @@ _*NB!*_ Alle topics vil få \<teamnavn>.\<topicnavn> som topicnavn hos kafka bro
 Så privat-pgi-hendelse vil bli renamet til pensjonsamhandling.privat-pgi-hendelse
 
 #### Manuelle endringer på topic config:
+Det er sjeldent behov for dette, da topicene blir automatisk oppdatert ved push til main branchen.
+Hvis det fortsatt er behov, så gjøres det slik:
+
 1. Utfør endringer i yaml filene under `topics/` 
 2. Kjør følgende kommandoer:
 
