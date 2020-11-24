@@ -13,7 +13,7 @@ spec:
     partitions: 3
     replication: 3
     retentionBytes: -1 # Messages will never get deleted because of disk space
-    retentionHours: 2192 # Messages are stored for 3 months
+    retentionHours: 2193 # Messages are stored for 3 months
   acl:
     - team: pensjonsamhandling
       application: pgi-les-inntekt-skatt
