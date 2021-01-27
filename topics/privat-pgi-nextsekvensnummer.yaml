@@ -3,6 +3,8 @@ kind: Topic
 metadata:
   name: privat-pgi-nextsekvensnummer
   namespace: pensjonsamhandling
+  annotations:
+    kafka.nais.io/removeDataWhenResourceIsDeleted: "true"
   labels:
     team: pensjonsamhandling
 spec:
