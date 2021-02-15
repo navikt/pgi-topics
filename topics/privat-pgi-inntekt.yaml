@@ -2,9 +2,9 @@ apiVersion: kafka.nais.io/v1
 kind: Topic
 metadata:
   name: privat-pgi-inntekt
-  namespace: pensjonsamhandling
+  namespace: pensjonopptjening
   labels:
-    team: pensjonsamhandling
+    team: pensjonopptjening
 spec:
   pool: {{kafka-pool}}
   config:
@@ -15,9 +15,9 @@ spec:
     retentionBytes: -1 # Messages will never get deleted because of disk space
     retentionHours: 2193 # Messages are stored for 3 months
   acl:
-    - team: pensjonsamhandling
+    - team: pensjonopptjening
       application: pgi-les-inntekt-skatt
       access: write
-    - team: pensjonsamhandling
+    - team: pensjonopptjening
       application: pgi-lagre-inntekt-popp
       access: read
