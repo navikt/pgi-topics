@@ -38,6 +38,7 @@ Applikasjonene som bruker topicene kan du finne her:
 - [pgi-les-inntekt-skatt](https://github.com/navikt/pgi-les-inntekt-skatt)
 - [pgi-lagre-inntekt-popp](https://github.com/navikt/pgi-lagre-inntekt-popp)
 
+
 #### Kontakt
 Kontakt Team Samhandling dersom du har noen spørsmål. 
 Vi finnes blant annet på Slack, i kanalen [#samhandling_pensjonsområdet](https://nav-it.slack.com/archives/CQ08JC3UG)
