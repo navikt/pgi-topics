@@ -27,10 +27,11 @@ jobs:
     steps:
       - name: Retrive yaml files to be released
         run: |
-          echo "privat-pgi-nextsekvensnummer: ${{ github.event.inputs.privat-pgi-nextsekvensnummer }}"
-          echo "privat-pgi-hendelse: ${{ github.event.inputs.privat-pgi-hendelse }}"
-          echo "privat-pgi-inntekt: ${{ github.privat-pgi-inntekt }}"
-          echo "privat-pgi-hendelse-republisering: ${{ github.event.inputs.privat-pgi-hendelse-republisering }}"
+          if [ ${{ github.event.inputs.privat-pgi-nextsekvensnummer }} == "true" ] then echo "topics/privat-pgi-nextsekvensnummer.yaml"}
+          if [ ${{ github.event.inputs.privat-pgi-hendelse }} == "true" ] then echo "topics/privat-pgi-hendelse.yaml"}
+          if [ ${{ github.event.privat-pgi-inntekt }} == "true" ] then echo "topics/privat-pgi-inntekt.yaml"}
+          if [ ${{ github.event.inputs.privat-pgi-hendelse-republisering }} == "true" ] then echo "topics/privat-pgi-hendelse-republisering.yaml"}
+
 #      - name: Checkout
 #        uses: actions/checkout@v2
 #      - name: Release changes for pgi topics
