@@ -25,12 +25,12 @@ jobs:
     name: Deploy to dev-gcp
     runs-on: ubuntu-latest
     steps:
-      steps:
-        - run: |
-            echo "privat-pgi-nextsekvensnummer: ${{ github.event.inputs.privat-pgi-nextsekvensnummer }}"
-            echo "privat-pgi-hendelse: ${{ github.event.inputs.privat-pgi-hendelse }}"
-            echo "privat-pgi-inntekt: ${{ github.privat-pgi-inntekt }}"
-            echo "privat-pgi-hendelse-republisering: ${{ github.event.inputs.privat-pgi-hendelse-republisering }}"
+      - name: Retrive yaml files to be released
+        run: |
+          echo "privat-pgi-nextsekvensnummer: ${{ github.event.inputs.privat-pgi-nextsekvensnummer }}"
+          echo "privat-pgi-hendelse: ${{ github.event.inputs.privat-pgi-hendelse }}"
+          echo "privat-pgi-inntekt: ${{ github.privat-pgi-inntekt }}"
+          echo "privat-pgi-hendelse-republisering: ${{ github.event.inputs.privat-pgi-hendelse-republisering }}"
 #      - name: Checkout
 #        uses: actions/checkout@v2
 #      - name: Release changes for pgi topics
