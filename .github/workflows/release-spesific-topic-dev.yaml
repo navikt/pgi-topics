@@ -1,4 +1,4 @@
-name: Release topic/topics to dev-gcp
+name: Release topic to dev-gcp
 
 on:
   workflow_dispatch:
@@ -29,4 +29,4 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           VAR: kafka-pool=nav-dev
-          RESOURCE: ${{ env.TOPIC_YAML_PATH }}
+          RESOURCE: topics/${{ github.event.inputs.topic }}.yaml
