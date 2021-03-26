@@ -1,45 +1,19 @@
-name: Release topic/topics to dev-gcp
+name: Release topic changes dev-gcp
 
 on:
   workflow_dispatch:
-    inputs:
-      privat-pgi-nextsekvensnummer:
-        description: 'true if privat-pgi-nextsekvensnummer should be deployed to dev'
-        required: true
-        default: 'false'
-      privat-pgi-hendelse:
-        description: 'true if privat-pgi-hendelse should be deployed to dev'
-        required: true
-        default: 'false'
-      privat-pgi-inntekt:
-        description: 'true if privat-pgi-inntekt should be deployed to dev'
-        required: true
-        default: 'false'
-      privat-pgi-hendelse-republisering:
-        description: 'true if privat-pgi-inntekt should be deployed to dev'
-        required: true
-        default: 'false'
 
 jobs:
   deploy-to-dev:
     name: Deploy to dev-gcp
     runs-on: ubuntu-latest
     steps:
-      - name: Retrive yaml files to be released
-        run: |
-          if [ ${{ github.event.inputs.privat-pgi-nextsekvensnummer }} == "true" ] then echo "topics/privat-pgi-nextsekvensnummer.yaml"}
-          if [ ${{ github.event.inputs.privat-pgi-hendelse }} == "true" ] then echo "topics/privat-pgi-hendelse.yaml"}
-          if [ ${{ github.event.privat-pgi-inntekt }} == "true" ] then echo "topics/privat-pgi-inntekt.yaml"}
-          if [ ${{ github.event.inputs.privat-pgi-hendelse-republisering }} == "true" ] then echo "topics/privat-pgi-hendelse-republisering.yaml"}
-
-#      - name: Checkout
-#        uses: actions/checkout@v2
-#      - name: Release changes for pgi topics
-#        uses: nais/deploy/actions/deploy@v1
-#        env:
-#          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-#          CLUSTER: dev-gcp
-#          VAR: kafka-pool=nav-dev
-#          RESOURCE: topics/privat-pgi-nextsekvensnummer.yaml,topics/privat-pgi-hendelse.yaml,topics/privat-pgi-inntekt.yaml,topics/privat-pgi-hendelse-republisering.yaml
-
-
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Release changes for pgi topics
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          VAR: kafka-pool=nav-dev
+          RESOURCE: topics/privat-pgi-nextsekvensnummer.yaml,topics/privat-pgi-hendelse.yaml,topics/privat-pgi-inntekt.yaml,topics/privat-pgi-hendelse-republisering.yaml
