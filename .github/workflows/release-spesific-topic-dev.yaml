@@ -1,0 +1,32 @@
+name: Release topic/topics to dev-gcp
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Topic name'
+        required: true
+        default: 'privat-pgi-nextsekvensnummer'
+
+jobs:
+  deploy-to-dev:
+    name: Deploy to dev-gcp
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create topic URI
+        run: |
+          TOPIC=${{ github.event.inputs.topic }}
+          VALID_TOPICS=("privat-pgi-nextsekvensnummer" "privat-pgi-hendelse" "privat-pgi-inntekt" "privat-pgi-hendelse-republisering" )
+          if [[ -z ${TOPIC} || ! " ${VALID_TOPICS[@]} " =~ "${TOPIC} " ]] ; then
+            echo "TOPIC must be one of the following topics: ${VALID_TOPICS[@]}"
+            exit 1
+          else
+            echo "TOPIC_YAML_PATH=topics/${TOPIC}.yaml" >> $GITHUB_ENV
+          fi
+      - name: Release changes for pgi topic
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          VAR: kafka-pool=nav-dev
+          RESOURCE: ${{ env.TOPIC_YAML_PATH }}
