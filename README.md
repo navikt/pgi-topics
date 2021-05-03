@@ -17,11 +17,11 @@ Hvis det fortsatt er behov, så gjøres det slik:
 ```
 # Rull ut endringer til dev-gcp
 kubectl config use-context dev-gcp
-kubectl apply -f topics/<topicnavn.yaml> -n pensjonopptjening
+kubectl apply -f topics/dev/<topicnavn.yaml> -n pensjonopptjening
 
 # Rull ut endringer til prod-gcp
 kubectl config use-context dev-gcp
-kubectl apply -f topics/<topicnavn.yaml> -n pensjonopptjening
+kubectl apply -f topics/prod/<topicnavn.yaml> -n pensjonopptjening
 ```
 Det må gjøres for både dev og prod hvis du gjør det manuelt.
 

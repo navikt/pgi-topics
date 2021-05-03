@@ -6,7 +6,7 @@ metadata:
   labels:
     team: pensjonopptjening
 spec:
-  pool: {{kafka-pool}}
+  pool: nav-dev
   config:
     cleanupPolicy: delete
     minimumInSyncReplicas: 1

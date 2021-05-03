@@ -15,5 +15,4 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
-          VAR: kafka-pool=nav-dev
-          RESOURCE: topics/privat-pgi-nextsekvensnummer.yaml,topics/privat-pgi-hendelse.yaml,topics/privat-pgi-inntekt.yaml,topics/privat-pgi-hendelse-republisering.yaml
+          RESOURCE: topics/dev/privat-pgi-nextsekvensnummer.yaml,topics/dev/privat-pgi-hendelse.yaml,topics/dev/privat-pgi-inntekt.yaml,topics/dev/privat-pgi-hendelse-republisering.yaml
