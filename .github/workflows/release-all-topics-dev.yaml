@@ -6,13 +6,15 @@ on:
 jobs:
   deploy-to-dev:
     name: Deploy to dev-gcp
+    permissions:
+      contents: "read"
+      id-token: "write"  
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Release changes for pgi topics
-        uses: nais/deploy/actions/deploy@v1
+        uses: nais/deploy/actions/deploy@v2
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: topics/dev/privat-pgi-nextsekvensnummer.yaml,topics/dev/privat-pgi-hendelse.yaml,topics/dev/privat-pgi-inntekt.yaml,topics/dev/privat-pgi-hendelse-republisering.yaml
