@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
       - name: Release changes for pgi topics
         uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: prod-gcp
-          RESOURCE: topics/prod/privat-pgi-nextsekvensnummer.yaml,topics/prod/privat-pgi-hendelse.yaml,topics/prod/privat-pgi-inntekt.yaml,topics/prod/privat-pgi-hendelse-republisering.yaml
+          RESOURCE: topics/prod/privat-pgi-nextsekvensnummer.yaml,topics/prod/privat-pgi-hendelse.yaml,topics/prod/privat-pgi-hendelse-ny.yaml,topics/prod/privat-pgi-inntekt.yaml,topics/prod/privat-pgi-hendelse-republisering.yaml

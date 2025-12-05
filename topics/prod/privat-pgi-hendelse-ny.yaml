@@ -1,0 +1,26 @@
+apiVersion: kafka.nais.io/v1
+kind: Topic
+metadata:
+  name: privat-pgi-hendelse-ny
+  namespace: pensjonopptjening
+  labels:
+    team: pensjonopptjening
+spec:
+  pool: nav-prod
+  config:
+    cleanupPolicy: compact # Kafka will only store _at least_ the last message produced to a topic, for a specific key
+    minimumInSyncReplicas: 1
+    partitions: 3
+    replication: 3
+    retentionBytes: -1 # Messages will never get deleted because of disk space
+    retentionHours: 2193 # Messages are stored for 3 months
+  acl:
+    - team: pensjonopptjening
+      application: pgi-republiser-hendelse
+      access: write
+    - team: pensjonopptjening
+      application: pgi-les-hendelse-skatt
+      access: write
+    - team: pensjonopptjening
+      application: pgi-les-inntekt-skatt
+      access: read
