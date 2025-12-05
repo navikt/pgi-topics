@@ -1,0 +1,26 @@
+name: 'check-deploy-to-prod-approved'
+
+on:
+  workflow_run:
+    workflows:
+      - 'Release topic changes prod-gcp'
+    types:
+      - 'completed'
+
+jobs:
+  check-workflow-approved:
+    name: 'Send Slack message'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    steps:
+      - name: 'Send Slack message'
+        id: invoke-slack-webhook
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          webhook: ${{ secrets.SLACK_WORKFLOW_APPROVAL_BUYPASS_WEBHOOK }}
+          webhook-type: webhook-trigger
+          payload: |
+            github_user_url: "${{ github.event.workflow_run.actor.html_url }}"
+            workflow_url: "${{ github.event.workflow_run.html_url }}"
+            workflow_title: "${{ github.event.workflow_run.display_title }}"
